@@ -7,41 +7,37 @@ import uq.entities.Point;
 /**
  * Re-sample the trajectory.
  * Select every sampleRate point from the list.
- * 
+ *
  * @author uqdalves
  */
 public class DifferentSampleRateTransformation implements TransformationInterface {
-	public int sampleRate = 0; // every sampleRate points
-	
-	public DifferentSampleRateTransformation(){}
-	public DifferentSampleRateTransformation(int sampleRate){
-		this.sampleRate = sampleRate;
-	}
+    public int sampleRate = 0; // every sampleRate points
 
-	@Override
-	public ArrayList<Point> getTransformation(ArrayList<Point> list) {
-		return getDiffSampleRateTransf(list);
-	}
+    public DifferentSampleRateTransformation() {
+    }
 
-	/**
-	 * Re-sample the trajectory. 
-	 * 
-	 */
-	private ArrayList<Point> getDiffSampleRateTransf(ArrayList<Point> list){
-		ArrayList<Point> new_sample = new ArrayList<Point>();
-		
-		// get every sampleRate points
-		for(int i=0; i<list.size(); i += sampleRate){
-			new_sample.add(list.get(i));
-		}
-		return new_sample;
-	}
-	
-	@Override
-	public ArrayList<Point> getTransformation(ArrayList<Point> list,
-			ArrayList<Point> escapeList) { 
-		return null;
-	}
+    public DifferentSampleRateTransformation(int sampleRate) {
+        this.sampleRate = sampleRate;
+    }
 
+    @Override
+    public ArrayList<Point> getTransformation(ArrayList<Point> list) {
+        return getDiffSampleRateTransformation(list);
+    }
 
+    /**
+     * sample the trajectory: get every sampleRate points
+     */
+    private ArrayList<Point> getDiffSampleRateTransformation(ArrayList<Point> list) {
+        ArrayList<Point> samples = new ArrayList<>();
+        for (int i = 0; i < list.size(); i += sampleRate) {
+            samples.add(list.get(i));
+        }
+        return samples;
+    }
+
+    @Override
+    public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
+        return null;
+    }
 }

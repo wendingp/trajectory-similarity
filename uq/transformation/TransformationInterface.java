@@ -7,11 +7,12 @@ package uq.transformation;
 import java.util.ArrayList;
 
 import uq.entities.Point;
+
 /**
- *
- * @author uqhsu1
+ * @author uqhsu1 wendingp
  */
 public interface TransformationInterface {
-    public ArrayList<Point> getTransformation(ArrayList<Point> list);
-    public ArrayList<Point> getTransformation(ArrayList<Point> list,ArrayList<Point> escapeList);
+    ArrayList<Point> getTransformation(ArrayList<Point> list);
+
+    ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList);
 }

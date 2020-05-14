@@ -1,49 +1,40 @@
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 /**
  * Shifts the time period of a trajectory, make it starts from time t = startTime
- * 
+ *
  * @author uqdalves
  */
 public class TimeShiftTransformation implements TransformationInterface {
-	long startTime = 0;
-	
-	public TimeShiftTransformation(){}
-	public TimeShiftTransformation(long startTime) {
-		this.startTime = startTime;
-	}
+    long newStartTime;
 
-	/**
-	 * Returns a copy of the trajectory with time period shifted to 
-	 * start at t = zero 
-	 */
-	@Override
-	public ArrayList<Point> getTransformation(ArrayList<Point> list) {
-		ArrayList<Point> new_traj = new ArrayList<Point>();
+    public TimeShiftTransformation(long newStartTime) {
+        this.newStartTime = newStartTime;
+    }
 
-		long time_t1 = list.get(0).timeLong;
-		for(int i=0; i<list.size(); i++){
-			// Makes a copy of the Point
-			Point new_p = new Point();
-			new_p = list.get(i).clone();
-			
-			// Shifts the time and set to the new list
-			new_p.timeLong = list.get(i).timeLong - time_t1 + startTime;
-			
-			new_traj.add(new_p);
-		}
-		
-		return new_traj;
-	}
+    /**
+     * Returns a copy of the trajectory with time period shifted to
+     * start at t = zero
+     */
+    @Override
+    public ArrayList<Point> getTransformation(ArrayList<Point> list) {
+        ArrayList<Point> result = new ArrayList<>();
+        long oldStartTime = list.get(0).timeLong;
+        for (Point point : list) {
+            // Makes a copy of the Point and shift the time
+            Point newPoint = point.clone();
+            newPoint.timeLong = point.timeLong - oldStartTime + newStartTime;
+            result.add(newPoint);
+        }
+        return result;
+    }
 
-	@Override
-	public ArrayList<Point> getTransformation(ArrayList<Point> list,
-			ArrayList<Point> escapeList) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
+    @Override
+    public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
+        throw new UnsupportedOperationException();
+    }
 }

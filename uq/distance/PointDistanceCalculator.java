@@ -4,6 +4,6 @@ import uq.entities.Point;
 
 public interface PointDistanceCalculator {
 
-	public double getDistance(Point x, Point y);
-	
+    double getDistance(Point x, Point y);
+
 }

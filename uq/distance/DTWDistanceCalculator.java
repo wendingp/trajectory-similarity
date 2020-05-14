@@ -15,16 +15,16 @@ public class DTWDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getDTW(r_clone, s_clone);
+        return getDTW(rClone, sClone);
     }
 
     private double getDTW(ArrayList<Point> r, ArrayList<Point> s) {
-//        if (r.size() > s.size() || r.size() < s.size()) {
-//            int i = -1;
-//        }
+        // if (r.size() > s.size() || r.size() < s.size()) {
+        // int i = -1;
+        // }
         double[][] dist = new double[r.size() + 1][s.size() + 1];
 
         // initialize the dynamic programming seeds

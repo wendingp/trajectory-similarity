@@ -10,7 +10,6 @@ public class Point implements Cloneable {
     public String timeString = "";
     public long timeLong = 0L;
 
-
     public Point() {
     }
 
@@ -56,7 +55,7 @@ public class Point implements Cloneable {
         }
         for (int i = 0; i < p.dimension; i++) {
             if (Math.abs(coordinate[i] - p.coordinate[i]) > EPSILON) {
-//            if (this.coordinate[i] != p.coordinate[i]) { // fixed
+                // if (this.coordinate[i] != p.coordinate[i]) { // fixed
                 return false;
             }
         }
@@ -67,7 +66,6 @@ public class Point implements Cloneable {
     public String toString() {
         return coordinate[0] + "-" + coordinate[1];
     }
-
 
     public double distanceTo(Point another) {
         double distance = 0.0;

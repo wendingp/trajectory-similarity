@@ -1,12 +1,11 @@
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 
+import java.util.ArrayList;
+
 /**
- * Re-sample the trajectory.
- * Select every sampleRate point from the list.
+ * Re-sample the trajectory. Select every sampleRate point from the list.
  *
  * @author uqdalves
  */

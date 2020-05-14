@@ -4,9 +4,9 @@
  */
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1 wendingp

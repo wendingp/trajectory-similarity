@@ -34,7 +34,9 @@ public class Polygon {
     }
 
     private double getArea(Point x, Point y, Point z) {
-        double result = Math.abs(x.coordinate[0] * y.coordinate[1] + x.coordinate[1] * z.coordinate[0] + y.coordinate[0] * z.coordinate[1] - z.coordinate[0] * y.coordinate[1] - x.coordinate[0] * z.coordinate[1] - x.coordinate[1] * y.coordinate[0]);
+        double result = Math.abs(x.coordinate[0] * y.coordinate[1] + x.coordinate[1] * z.coordinate[0]
+                + y.coordinate[0] * z.coordinate[1] - z.coordinate[0] * y.coordinate[1]
+                - x.coordinate[0] * z.coordinate[1] - x.coordinate[1] * y.coordinate[0]);
         return result / 2;
     }
 }

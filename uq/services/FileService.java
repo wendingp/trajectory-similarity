@@ -25,28 +25,25 @@ public class FileService {
     private static final String GROUND_TRUTH_FOLDER = "GroundTruth\\";
 
     private static final int DIMENSION = 2;
-	
-	/*	
-	public static void main(String[] args) {
-		File diretory = new File(ROOT_PATH + INPUT_FOLDER);
-		File files[] = openDirectoryFiles(diretory);
-		
-	    for (int i = 0; i < files.length; i++) {  
-	        String name = files[i].getName();
-	      System.out.println(name);  
-	        name = name.replaceAll("_pct", "_10pct");
-	        name = name.replaceAll("_d", "_10d");
 
-	        files[i].renameTo(new File(ROOT_PATH + name));
-	    } 
-	    
-	    System.out.println("Finished");
-			
-    } */
+    /*
+     * public static void main(String[] args) { File diretory = new File(ROOT_PATH +
+     * INPUT_FOLDER); File files[] = openDirectoryFiles(diretory);
+     *
+     * for (int i = 0; i < files.length; i++) { String name = files[i].getName();
+     * System.out.println(name); name = name.replaceAll("_pct", "_10pct"); name =
+     * name.replaceAll("_d", "_10d");
+     *
+     * files[i].renameTo(new File(ROOT_PATH + name)); }
+     *
+     * System.out.println("Finished");
+     *
+     * }
+     */
 
     /**
-     * Return a list of Trajectory object with the coordinates read
-     * from disc. The original file trajectories, without re-sampling.
+     * Return a list of Trajectory object with the coordinates read from disc. The
+     * original file trajectories, without re-sampling.
      */
     public static ArrayList<Trajectory> readOriginalTrajectories() {
         ArrayList<Trajectory> trajectoryList = new ArrayList<>();
@@ -62,8 +59,7 @@ public class FileService {
             // read files
             for (File currentFile : files) {
                 // read file
-                BufferedReader buffer = new BufferedReader(
-                        new FileReader(currentFile));
+                BufferedReader buffer = new BufferedReader(new FileReader(currentFile));
 
                 // each line of the file
                 String line;
@@ -129,39 +125,37 @@ public class FileService {
         return trajectoryList;
     }
 
-
     /**
-     * Return a list of all Trajectory objects with the coordinates read
-     * from disc. From the re-sampled folder.
+     * Return a list of all Trajectory objects with the coordinates read from disc.
+     * From the re-sampled folder.
      */
     public static ArrayList<Trajectory> readAllTrajectories() {
         return readTrajectories(ALL_TRAJECTORIES_FOLDER);
     }
 
     /**
-     * Return a list of Trajectory objects with the coordinates read
-     * from disc. Sampled trajectories, form the sample folder.
+     * Return a list of Trajectory objects with the coordinates read from disc.
+     * Sampled trajectories, form the sample folder.
      */
     public static ArrayList<Trajectory> readSampleTrajectories() {
         return readTrajectories(SAMPLE_FOLDER);
     }
 
     /**
-     * Return a list of test Trajectory objects with the coordinates read
-     * from disc. Previously selected random trajectories, form the test folder.
+     * Return a list of test Trajectory objects with the coordinates read from disc.
+     * Previously selected random trajectories, form the test folder.
      */
     public static ArrayList<Trajectory> readTestTrajectories() {
         return readTrajectories(TEST_FOLDER);
     }
 
     /**
-     * Return a list of Trajectory objects with the coordinates read
-     * from disc. Read the re-sampled trajectories.
+     * Return a list of Trajectory objects with the coordinates read from disc. Read
+     * the re-sampled trajectories.
      */
     private static ArrayList<Trajectory> readTrajectories(final String folderToRead) {
         // trajectories to read
-        ArrayList<Trajectory> trajectoryList =
-                new ArrayList<>();
+        ArrayList<Trajectory> trajectoryList = new ArrayList<>();
 
         try {
             // open files from folder
@@ -171,8 +165,7 @@ public class FileService {
             // read files
             for (File currentFile : files) {
                 // read file
-                BufferedReader buffer = new BufferedReader(
-                        new FileReader(currentFile));
+                BufferedReader buffer = new BufferedReader(new FileReader(currentFile));
 
                 // each line of the file
                 String line;
@@ -205,7 +198,6 @@ public class FileService {
                         timeString = tokens[2];
                         timeLong = Long.parseLong(tokens[2]);
 
-
                         // create a new point from the line input, set features
                         Point point = new Point(coordinate, timeLong);
                         point.timeString = timeString;
@@ -229,19 +221,16 @@ public class FileService {
         return trajectoryList;
     }
 
-
     /**
-     * Return a list of distances from files.
-     * One DistanceFile object per file.
+     * Return a list of distances from files. One DistanceFile object per file.
      *
-     * @param readGroundTruth True whether to read the ground truth file
-     *                        (ground truth folder), false otherwise.
+     * @param readGroundTruth True whether to read the ground truth file (ground
+     *                        truth folder), false otherwise.
      */
     public static ArrayList<DistanceFile> readDistances(boolean readGroundTruth) {
         String folderToRead = readGroundTruth ? GROUND_TRUTH_FOLDER : DISTANCES_FOLDER;
 
-        ArrayList<DistanceFile> distanceFilesList =
-                new ArrayList<>();
+        ArrayList<DistanceFile> distanceFilesList = new ArrayList<>();
 
         System.out.println(" Reading Distance Files.. \n");
         try {
@@ -252,8 +241,7 @@ public class FileService {
             // read files
             for (File currentFile : files) {
                 // read file
-                BufferedReader buffer = new BufferedReader(
-                        new FileReader(currentFile));
+                BufferedReader buffer = new BufferedReader(new FileReader(currentFile));
 
                 // each line of the file
                 String line;
@@ -284,11 +272,9 @@ public class FileService {
     }
 
     /**
-     * Select a random number of trajectories from the list.
-     * Return a clone of them.
+     * Select a random number of trajectories from the list. Return a clone of them.
      */
-    public static ArrayList<Trajectory> selectRandomTrajectories(
-            ArrayList<Trajectory> trajList, int randomNumber) {
+    public static ArrayList<Trajectory> selectRandomTrajectories(ArrayList<Trajectory> trajList, int randomNumber) {
         ArrayList<Trajectory> randomList = new ArrayList<>();
 
         Random rand = new Random();
@@ -302,20 +288,22 @@ public class FileService {
     }
 
     /**
-     * Creates and save a file with the original trajectory
-     * and its respective transformation
+     * Creates and save a file with the original trajectory and its respective
+     * transformation
      */
     public static void saveTransformationFile(Trajectory traj, Trajectory newTraj, String fileName) {
         StringBuilder script = new StringBuilder();
 
         for (Point p : traj.getPointsList()) {
-            script.append(p.coordinate[0]).append(",").append(p.coordinate[1]).append(",").append(p.timeLong).append("\n");
+            script.append(p.coordinate[0]).append(",").append(p.coordinate[1]).append(",").append(p.timeLong)
+                    .append("\n");
         }
 
         script.append("#\n");
 
         for (Point p : newTraj.getPointsList()) {
-            script.append(p.coordinate[0]).append(",").append(p.coordinate[1]).append(",").append(p.timeLong).append("\n");
+            script.append(p.coordinate[0]).append(",").append(p.coordinate[1]).append(",").append(p.timeLong)
+                    .append("\n");
         }
 
         saveFile(script.toString(), fileName);
@@ -340,17 +328,17 @@ public class FileService {
     }
 
     /**
-     * Creates and save a file with the distances mean and standard deviation.
-     * Each output file line contains three columns:
-     * the distance file name | the mean | and standard deviation.
+     * Creates and save a file with the distances mean and standard deviation. Each
+     * output file line contains three columns: the distance file name | the mean |
+     * and standard deviation.
      */
     public static void saveDistancesAnalysisFile(String script, String fileName) {
         saveFile(script, fileName);
     }
 
     /**
-     * Read the files inside a directory. Recursively read
-     * directories into other directory.
+     * Read the files inside a directory. Recursively read directories into other
+     * directory.
      *
      * @param diretory
      * @return File[] a list with the files read
@@ -391,17 +379,14 @@ public class FileService {
         try {
 
             file.createNewFile();
-		/*	if(!file.exists()){  
-				file.createNewFile();
-	        // System.out.println("File '" + fileName + "' successfully created.");  
-	        }else{  
-	            System.out.println("File '" + fileName + "' already exists.");  
-	        } 
-			*/
-            BufferedWriter buffer =
-                    new BufferedWriter(new PrintWriter(file));
+            /*
+             * if(!file.exists()){ file.createNewFile(); // System.out.println("File '" +
+             * fileName + "' successfully created."); }else{ System.out.println("File '" +
+             * fileName + "' already exists."); }
+             */
+            BufferedWriter buffer = new BufferedWriter(new PrintWriter(file));
             buffer.write(script);
-            //buffer.flush();
+            // buffer.flush();
             buffer.close();
 
         } catch (IOException e) {
@@ -410,11 +395,10 @@ public class FileService {
     }
 
     /**
-     * Save this list of trajectories to disc files,
-     * save every trajPerFile trajectories into a different file.
+     * Save this list of trajectories to disc files, save every trajPerFile
+     * trajectories into a different file.
      */
-    public static void saveTrajectoriesFiles(
-            ArrayList<Trajectory> trajectoryList, int trajPerFile) {
+    public static void saveTrajectoriesFiles(ArrayList<Trajectory> trajectoryList, int trajPerFile) {
 
         int count = 1;
         StringBuilder script = new StringBuilder();
@@ -422,7 +406,8 @@ public class FileService {
         for (Trajectory traj : trajectoryList) {
             script.append("#\n");
             for (Point p : traj.getPointsList()) {
-                script.append(p.coordinate[0]).append(",").append(p.coordinate[1]).append(",").append(p.timeLong).append("\n");
+                script.append(p.coordinate[0]).append(",").append(p.coordinate[1]).append(",").append(p.timeLong)
+                        .append("\n");
             }
 
             if (count == trajPerFile) {

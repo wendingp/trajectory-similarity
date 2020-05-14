@@ -43,76 +43,61 @@ public class ThreeDLine {
 
         assert (startPoint.timeLong != endPoint.timeLong);
 
-
     }
 
     public Point getPointByTime(long t) {
         if (isX && isY) {
-            double[] temp = new double[]{x, y};
+            double[] temp = new double[] {x, y};
             return new Point(temp, t);
         } else if (isX) {
             double aaa = (double) (t - startPoint.timeLong);
             double bbb = (double) (endPoint.timeLong - startPoint.timeLong);
 
-            double yy = ((aaa) * (bbb) / (endPoint.coordinate[1] - startPoint.coordinate[1])) + startPoint.coordinate[1];
+            double yy = ((aaa) * (bbb) / (endPoint.coordinate[1] - startPoint.coordinate[1]))
+                    + startPoint.coordinate[1];
 
-            double[] temp = new double[]{x, yy};
+            double[] temp = new double[] {x, yy};
             return new Point(temp, t);
 
         } else if (isY) {
             double aaa = (double) (t - startPoint.timeLong);
             double bbb = (double) (endPoint.timeLong - startPoint.timeLong);
 
-            double xx = ((aaa) * (bbb) / (endPoint.coordinate[0] - startPoint.coordinate[0])) + startPoint.coordinate[0];
+            double xx = ((aaa) * (bbb) / (endPoint.coordinate[0] - startPoint.coordinate[0]))
+                    + startPoint.coordinate[0];
 
-            double[] temp = new double[]{xx, y};
+            double[] temp = new double[] {xx, y};
             return new Point(temp, t);
         } else {
             double aaa = (double) (t - startPoint.timeLong);
             double bbb = (double) (endPoint.timeLong - startPoint.timeLong);
 
-            double yy = ((aaa) * (bbb) / (endPoint.coordinate[1] - startPoint.coordinate[1])) + startPoint.coordinate[1];
+            double yy = ((aaa) * (bbb) / (endPoint.coordinate[1] - startPoint.coordinate[1]))
+                    + startPoint.coordinate[1];
 
-            double xx = ((aaa) * (bbb) / (endPoint.coordinate[0] - startPoint.coordinate[0])) + startPoint.coordinate[0];
+            double xx = ((aaa) * (bbb) / (endPoint.coordinate[0] - startPoint.coordinate[0]))
+                    + startPoint.coordinate[0];
 
-            double[] temp = new double[]{xx, yy};
+            double[] temp = new double[] {xx, yy};
             return new Point(temp, t);
         }
 
     }
     /*
-    public double getPointLineDistance(Point p){
-        double result=0;
-        if(isKZero){
-            return Math.abs(p.coordinate[0]-x);
-        }else{
-            result=Math.abs(k*p.coordinate[0]+(-1)*p.coordinate[1]+b);
-            result=result/(Math.sqrt(k*k+1));
-            
-        }
-        return result;
-    }
-    
-    public Point getIntersection(Line l){
-        if(isKZero&&l.isKZero){
-            return null;
-        }else if(isKZero){
-        double[] temp=new double[2];
-        temp[0]=x;
-        temp[1]=l.k*x+l.b;
-        return new Point(temp);
-        }else if(l.isKZero){
-            double[] temp=new double[2];
-        temp[0]=l.x;
-        temp[1]=k*l.x+b;
-        }else if(k==l.k){
-            return null;
-        }
-        
-        double[] temp=new double[2];
-        temp[0]=(l.b-b)/(k-l.k);
-        temp[1]=k*temp[0]+b;
-        
-        return new Point(temp);
-    }*/
+     * public double getPointLineDistance(Point p){ double result=0; if(isKZero){
+     * return Math.abs(p.coordinate[0]-x); }else{
+     * result=Math.abs(k*p.coordinate[0]+(-1)*p.coordinate[1]+b);
+     * result=result/(Math.sqrt(k*k+1));
+     *
+     * } return result; }
+     *
+     * public Point getIntersection(Line l){ if(isKZero&&l.isKZero){ return null;
+     * }else if(isKZero){ double[] temp=new double[2]; temp[0]=x; temp[1]=l.k*x+l.b;
+     * return new Point(temp); }else if(l.isKZero){ double[] temp=new double[2];
+     * temp[0]=l.x; temp[1]=k*l.x+b; }else if(k==l.k){ return null; }
+     *
+     * double[] temp=new double[2]; temp[0]=(l.b-b)/(k-l.k); temp[1]=k*temp[0]+b;
+     *
+     * return new Point(temp); }
+     */
 }

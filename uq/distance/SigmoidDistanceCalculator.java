@@ -1,8 +1,8 @@
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 public class SigmoidDistanceCalculator implements SequenceDistanceCalculator {
     private final double a;
@@ -36,8 +36,7 @@ public class SigmoidDistanceCalculator implements SequenceDistanceCalculator {
             for (int j = 1; j <= s.size(); j++) {
                 if (Math.abs(i - j) < delta) {
                     LCSSMetric[i][j] = SigmoidMatch(r.get(i - 1), s.get(j - 1), std)
-                            + Math.max(LCSSMetric[i - 1][j - 1],
-                            Math.max(LCSSMetric[i - 1][j], LCSSMetric[i][j - 1]));
+                            + Math.max(LCSSMetric[i - 1][j - 1], Math.max(LCSSMetric[i - 1][j], LCSSMetric[i][j - 1]));
                 } else {
                     LCSSMetric[i][j] = 0;
                 }
@@ -69,19 +68,19 @@ public class SigmoidDistanceCalculator implements SequenceDistanceCalculator {
     private double[] StandardDeviation(ArrayList<Point> r) {
         int dim = r.get(0).dimension;
         double[] sum = new double[dim];
-        double[] squaresum = new double[dim];
+        double[] squareSum = new double[dim];
 
         for (Point p : r) {
             for (int i = 0; i < dim; ++i) {
                 sum[i] += p.coordinate[i];
-                squaresum[i] += p.coordinate[i] * p.coordinate[i];
+                squareSum[i] += p.coordinate[i] * p.coordinate[i];
             }
         }
 
         for (int i = 0; i < dim; ++i) {
-            squaresum[i] -= sum[i] * sum[i];
+            squareSum[i] -= sum[i] * sum[i];
         }
 
-        return squaresum;
+        return squareSum;
     }
 }

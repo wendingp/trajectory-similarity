@@ -1,10 +1,10 @@
 package uq.distance;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PDTWDistanceCalculator implements SequenceDistanceCalculator {
 
@@ -17,9 +17,9 @@ public class PDTWDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
-        return getPDTW(r_clone, s_clone);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
+        return getPDTW(rClone, sClone);
     }
 
     private ArrayList<Point> reduceDimension(ArrayList<Point> t) {

@@ -4,10 +4,10 @@
  */
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1 wendingp
@@ -26,15 +26,14 @@ public class STLCSSWithSigmoidDistanceCalculator implements SequenceDistanceCalc
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
-
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
         // Time range (parameters - given)
-        Time = getTimeEnd(r_clone, s_clone);
-        startTime1 = r_clone.get(0).timeLong;
-        startTime2 = s_clone.get(0).timeLong;
+        Time = getTimeEnd(rClone, sClone);
+        startTime1 = rClone.get(0).timeLong;
+        startTime2 = sClone.get(0).timeLong;
 
-        return getSTLCSSSigmoid(r_clone, s_clone);
+        return getSTLCSSSigmoid(rClone, sClone);
     }
 
     private double getSTLCSSSigmoid(ArrayList<Point> r, ArrayList<Point> s) {
@@ -47,7 +46,6 @@ public class STLCSSWithSigmoidDistanceCalculator implements SequenceDistanceCalc
         for (int i = 0; i <= s.size(); i++) {
             LCSSMetric[0][i] = 0;
         }
-
 
         for (int i = 1; i <= r.size(); i++) {
             for (int j = 1; j <= s.size(); j++) {
@@ -66,10 +64,10 @@ public class STLCSSWithSigmoidDistanceCalculator implements SequenceDistanceCalc
     private boolean subcost(Point p1, Point p2) {
         boolean isSame = true;
         for (int i = 0; i < p1.dimension; i++) {
-			if (Math.abs((p1.timeLong - startTime1) - (p2.timeLong - startTime1)) > Distance) {
-				isSame = false;
-				break;
-			}
+            if (Math.abs((p1.timeLong - startTime1) - (p2.timeLong - startTime1)) > Distance) {
+                isSame = false;
+                break;
+            }
         }
 
         if (Math.abs(p1.timeLong - p2.timeLong) > Time) {

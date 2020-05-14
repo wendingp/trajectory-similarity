@@ -421,7 +421,7 @@ public class DistanceService {
     // POI Distance
     public void POI(ArrayList<Trajectory> trajList, ArrayList<Trajectory> tranfTrajList, ArrayList<Point> poi,
                     double threshold) {
-        POIOnRoadNetworkDistanceCaculator POI = new POIOnRoadNetworkDistanceCaculator(poi, threshold);
+        POIOnRoadNetworkDistanceCalculator POI = new POIOnRoadNetworkDistanceCalculator(poi, threshold);
         ArrayList<Double> distancesList = new ArrayList<>();
         for (int i = 0; i < trajList.size(); i++) {
             ArrayList<Point> r = trajList.get(i).getPointsList();
@@ -434,7 +434,7 @@ public class DistanceService {
     // POI Distance
     public void POI_2(ArrayList<Trajectory> sampleList, ArrayList<Trajectory> testList, ArrayList<Point> poi,
                       double threshold) {
-        POIOnRoadNetworkDistanceCaculator POI = new POIOnRoadNetworkDistanceCaculator(poi, threshold);
+        POIOnRoadNetworkDistanceCalculator POI = new POIOnRoadNetworkDistanceCalculator(poi, threshold);
         ArrayList<Double> distancesList = new ArrayList<>();
         for (Trajectory sample : sampleList) {
             for (Trajectory test : testList) {
@@ -630,12 +630,12 @@ public class DistanceService {
      * Make a clone of this list of points.
      */
     public static ArrayList<Point> clonePointsList(ArrayList<Point> list) {
-        ArrayList<Point> new_list = new ArrayList<>();
+        ArrayList<Point> newList = new ArrayList<>();
 
         for (Point p : list) {
-            new_list.add(p.clone());
+            newList.add(p.clone());
         }
 
-        return new_list;
+        return newList;
     }
 }

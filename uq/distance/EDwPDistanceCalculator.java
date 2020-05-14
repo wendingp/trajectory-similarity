@@ -1,9 +1,9 @@
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 /**
  * EDwP: Edit Distance with Projections
@@ -29,10 +29,10 @@ public class EDwPDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getEDwP(r_clone, s_clone);
+        return getEDwP(rClone, sClone);
     }
 
     /**
@@ -134,7 +134,7 @@ public class EDwPDistanceCalculator implements SequenceDistanceCalculator {
      */
     private static double coverage(Point e1_p1, Point e1_p2, Point e2_p1, Point e2_p2) {
         // segments coverage
-		return distance(e1_p1, e1_p2) + distance(e2_p1, e2_p2);
+        return distance(e1_p1, e1_p2) + distance(e2_p1, e2_p2);
     }
 
     /**
@@ -188,7 +188,7 @@ public class EDwPDistanceCalculator implements SequenceDistanceCalculator {
         double x = e_p1.coordinate[0] + (dot_product * (e_p2.coordinate[0] - e_p1.coordinate[0])) / len_2;
         double y = e_p1.coordinate[1] + (dot_product * (e_p2.coordinate[1] - e_p1.coordinate[1])) / len_2;
 
-        return new Point(new double[]{x, y});
+        return new Point(new double[] {x, y});
     }
 
     /**

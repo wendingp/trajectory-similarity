@@ -4,11 +4,11 @@
  */
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 import uq.entities.ThreeDLine;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 /**
  * @author Administrator
@@ -18,10 +18,10 @@ public class STEDDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getSTED(r_clone, s_clone);
+        return getSTED(rClone, sClone);
     }
 
     private double getSTED(ArrayList<Point> r, ArrayList<Point> s) {
@@ -73,7 +73,6 @@ public class STEDDistanceCalculator implements SequenceDistanceCalculator {
 
             sum += distance;
         }
-
 
         return sum / Math.abs(duration);
     }

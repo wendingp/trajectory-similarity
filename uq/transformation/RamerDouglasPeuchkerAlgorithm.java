@@ -4,9 +4,9 @@
  */
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1
@@ -14,7 +14,7 @@ import uq.entities.Point;
 public class RamerDouglasPeuchkerAlgorithm {
     private final ArrayList<Point> originalPoints = null;
     //
-    //threshold should be decide carefully
+    // threshold should be decide carefully
     //
     private double threshold = 1;
 
@@ -27,11 +27,10 @@ public class RamerDouglasPeuchkerAlgorithm {
 
     public ArrayList<Point> getKeyPoints(ArrayList<Point> points) {
         ArrayList<Point> keyPoints = new ArrayList<>();
-        /*if(points.size()==0){
-            return new ArrayList<Point>();
-        }else if(points.size()==1){
-            return points;
-        }*/
+        /*
+         * if(points.size()==0){ return new ArrayList<Point>(); }else
+         * if(points.size()==1){ return points; }
+         */
         double maxDistance = 0;
         int maxDistanceIndex = 0;
         for (int i = 0; i < points.size() - 1; i++) {
@@ -95,10 +94,9 @@ public class RamerDouglasPeuchkerAlgorithm {
         for (int i = start; i < start + length; i++) {
             subListCopy.add(list.get(i));
         }
-//        return list.subList(start, start + length).clone();
+        // return list.subList(start, start + length).clone();
         return subListCopy;
     }
-
 
     public void setThreshold(double t) {
         threshold = t;

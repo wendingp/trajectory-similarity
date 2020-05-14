@@ -3,8 +3,7 @@ package uq.entities;
 import java.util.ArrayList;
 
 /**
- * Implements a distance file entity.
- * Distances values and file name.
+ * Implements a distance file entity. Distances values and file name.
  *
  * @author uqdalves
  */
@@ -28,8 +27,7 @@ public class DistanceFile {
     }
 
     /**
-     * Add a distance to the list.
-     * Append it to the end of the list.
+     * Add a distance to the list. Append it to the end of the list.
      */
     public void addDistance(double distance) {
         distancesList.add(distance);

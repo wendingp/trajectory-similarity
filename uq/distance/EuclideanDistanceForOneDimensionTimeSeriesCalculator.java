@@ -1,8 +1,8 @@
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 public class EuclideanDistanceForOneDimensionTimeSeriesCalculator implements SequenceDistanceCalculator {
 

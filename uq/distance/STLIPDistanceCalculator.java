@@ -4,12 +4,12 @@
  */
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Line;
 import uq.entities.Point;
 import uq.entities.Polygon;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 import static uq.distance.LIPDistanceCalculator.getLines;
 
@@ -34,10 +34,10 @@ public class STLIPDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getSTLIP(r_clone, s_clone);
+        return getSTLIP(rClone, sClone);
     }
 
     public void setK(double k) {

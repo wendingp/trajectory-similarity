@@ -4,11 +4,11 @@
  */
 package uq.transformation;
 
+import uq.entities.Point;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.IntStream;
-
-import uq.entities.Point;
 
 /**
  * @author uqhsu1
@@ -92,7 +92,6 @@ public class SynchronizedShiftTransformation implements TransformationInterface 
         return new Point(temp, p.timeLong);
     }
 
-
     private int[] topN(int allSize, int N, double[] valueList) {
         int[] result = new int[N];
 
@@ -118,35 +117,34 @@ public class SynchronizedShiftTransformation implements TransformationInterface 
     }
 
     private int[] argSort(double[] list, boolean acsending) {
-//        int[] result = new int[list.length];
-//        boolean[] mark = new boolean[list.length];
-//
-//        for (int i = 0; i < mark.length; i++) {
-//            mark[i] = true;
-//            result[i] = -1;
-//        }
-//        int count = 0;
-//        for (int i = 0; i < list.length; i++) {
-//            double max = -1;
-//            int index = -1;
-//            for (int j = 0; j < list.length; j++) {
-//                if (mark[j]) {
-//                    if (max == -1) {
-//                        max = list[j];
-//                        index = j;
-//                    } else if (max < list[j]) {
-//                        max = list[j];
-//                        index = j;
-//                    }
-//                }
-//            }
-//            mark[index] = false;
-//            result[count] = index;
-//            count++;
-//        }
-//        return result;
+        // int[] result = new int[list.length];
+        // boolean[] mark = new boolean[list.length];
+        //
+        // for (int i = 0; i < mark.length; i++) {
+        // mark[i] = true;
+        // result[i] = -1;
+        // }
+        // int count = 0;
+        // for (int i = 0; i < list.length; i++) {
+        // double max = -1;
+        // int index = -1;
+        // for (int j = 0; j < list.length; j++) {
+        // if (mark[j]) {
+        // if (max == -1) {
+        // max = list[j];
+        // index = j;
+        // } else if (max < list[j]) {
+        // max = list[j];
+        // index = j;
+        // }
+        // }
+        // }
+        // mark[index] = false;
+        // result[count] = index;
+        // count++;
+        // }
+        // return result;
         return IntStream.range(0, list.length).boxed()
-                .sorted(Comparator.comparingDouble(i -> (acsending ? 1 : -1) * list[i]))
-                .mapToInt(ele -> ele).toArray();
+                .sorted(Comparator.comparingDouble(i -> (acsending ? 1 : -1) * list[i])).mapToInt(ele -> ele).toArray();
     }
 }

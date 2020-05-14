@@ -1,9 +1,9 @@
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 public class LCSSForMultiDimensionDistanceCalculator implements SequenceDistanceCalculator {
 
@@ -18,10 +18,9 @@ public class LCSSForMultiDimensionDistanceCalculator implements SequenceDistance
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
-
-        return getLCSS(r_clone, s_clone);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
+        return getLCSS(rClone, sClone);
     }
 
     private double getLCSS(ArrayList<Point> r, ArrayList<Point> s) {

@@ -1,10 +1,10 @@
 package uq.distance;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EuclideanDistanceForMultiDimensionTimeSeriesCalculator implements SequenceDistanceCalculator {
 
@@ -17,10 +17,10 @@ public class EuclideanDistanceForMultiDimensionTimeSeriesCalculator implements S
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getEDC(r_clone, s_clone);
+        return getEDC(rClone, sClone);
     }
 
     private double getEDC(ArrayList<Point> r, ArrayList<Point> s) {

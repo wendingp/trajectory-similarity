@@ -4,9 +4,9 @@
  */
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1
@@ -74,7 +74,7 @@ public class RandomShiftTransformation implements TransformationInterface {
     }
 
     private Point getShiftPoint(Point p, double shiftDistance) {
-        //double r=R*Math.random();
+        // double r=R*Math.random();
 
         double[] cosCurve = new double[p.dimension];
         for (int i = 0; i < cosCurve.length; i++) {
@@ -88,7 +88,6 @@ public class RandomShiftTransformation implements TransformationInterface {
 
         return new Point(temp, p.timeLong);
     }
-
 
     private int[] topN(int allSize, int N, double[] valueList) {
         int[] result = new int[N];

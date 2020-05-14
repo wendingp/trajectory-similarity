@@ -4,13 +4,13 @@
  */
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Line;
 import uq.entities.Point;
 import uq.entities.Polygon;
 import uq.entities.PolygonNew;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1
@@ -24,10 +24,10 @@ public class LIPDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getLIP(r_clone, s_clone);
+        return getLIP(rClone, sClone);
     }
 
     private double getLIP(ArrayList<Point> r, ArrayList<Point> s) {
@@ -45,9 +45,9 @@ public class LIPDistanceCalculator implements SequenceDistanceCalculator {
         for (int i = 0; i < polygonNew.size(); i++) {
             result += polygonNew.get(i).getArea() * weight.get(i);
         }
-//        if (result > 100) {
-//            int kk = 0;
-//        }
+        // if (result > 100) {
+        // int kk = 0;
+        // }
         // System.out.print(result+'\n');
         return result;
 

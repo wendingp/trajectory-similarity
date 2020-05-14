@@ -1,18 +1,17 @@
 package uq.distance;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
 
-public class POIOnRoadNetworkDistanceCaculator implements SequenceDistanceCalculator {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class POIOnRoadNetworkDistanceCalculator implements SequenceDistanceCalculator {
 
     ArrayList<Point> POISet;
     double Threshold;
 
-
-    public POIOnRoadNetworkDistanceCaculator(ArrayList<Point> poi, double threshold) {
+    public POIOnRoadNetworkDistanceCalculator(ArrayList<Point> poi, double threshold) {
         POISet = poi;
         Threshold = threshold;
     }
@@ -20,14 +19,13 @@ public class POIOnRoadNetworkDistanceCaculator implements SequenceDistanceCalcul
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getPOI(r_clone, s_clone);
+        return getPOI(rClone, sClone);
     }
 
     private double getPOI(ArrayList<Point> r, ArrayList<Point> s) {
-
 
         double[][] dist = new double[r.size() + 1][s.size() + 1];
 
@@ -44,7 +42,8 @@ public class POIOnRoadNetworkDistanceCaculator implements SequenceDistanceCalcul
         EuclideanDistanceCalculator pdc = new EuclideanDistanceCalculator();
         for (int i = r.size() - 1; i >= 0; --i) {
             for (int j = s.size() - 1; j >= 0; --j) {
-                dist[i][j] = pdc.getDistance(r.get(i), s.get(j)) + Math.min(dist[i + 1][j + 1], Math.min(dist[i + 1][j], dist[i][j + 1]));
+                dist[i][j] = pdc.getDistance(r.get(i), s.get(j))
+                        + Math.min(dist[i + 1][j + 1], Math.min(dist[i + 1][j], dist[i][j + 1]));
             }
         }
 
@@ -52,7 +51,7 @@ public class POIOnRoadNetworkDistanceCaculator implements SequenceDistanceCalcul
     }
 
     private int[] getSequence(ArrayList<Point> t) {
-        //ArrayList<Integer> result=new ArrayList<Integer>();
+        // ArrayList<Integer> result=new ArrayList<Integer>();
         int[] result = new int[POISet.size()];
         Arrays.fill(result, Integer.MAX_VALUE);
 
@@ -89,7 +88,6 @@ public class POIOnRoadNetworkDistanceCaculator implements SequenceDistanceCalcul
                 }
             }
         }
-
 
         return result;
     }

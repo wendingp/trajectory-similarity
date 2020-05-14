@@ -12,36 +12,30 @@ import java.util.ArrayList;
  */
 public class DISSIMDistanceCalculator implements SequenceDistanceCalculator {
     private static final long TIME_INCREMENT = 1000; // 1000 Milliseconds = 1 second
-/*	
-	public static void main(String[] args) {
-        Point p1 = new Point(new double[]{0,0}, 0);
-        Point p2 = new Point(new double[]{0,10}, 10);
-        Point p3 = new Point(new double[]{0,12}, 12);
-        ArrayList<Point> r =  new ArrayList<>();
-        r.add(p1); r.add(p2); r.add(p3);
-        
-        Point p4 = new Point(new double[]{2,0}, 0);
-        Point p5 = new Point(new double[]{2,7}, 7);
-        Point p6 = new Point(new double[]{2,10}, 10);
-        ArrayList<Point> s =  new ArrayList<>();
-        s.add(p4); s.add(p5); s.add(p6);
-        
-        double dissim = getDISSIM(r, s, 0, 10);
-        
-        System.out.println("DISSIM: " + dissim);
-    }
-*/
+    /*
+     * public static void main(String[] args) { Point p1 = new Point(new
+     * double[]{0,0}, 0); Point p2 = new Point(new double[]{0,10}, 10); Point p3 =
+     * new Point(new double[]{0,12}, 12); ArrayList<Point> r = new ArrayList<>();
+     * r.add(p1); r.add(p2); r.add(p3);
+     *
+     * Point p4 = new Point(new double[]{2,0}, 0); Point p5 = new Point(new
+     * double[]{2,7}, 7); Point p6 = new Point(new double[]{2,10}, 10);
+     * ArrayList<Point> s = new ArrayList<>(); s.add(p4); s.add(p5); s.add(p6);
+     *
+     * double dissim = getDISSIM(r, s, 0, 10);
+     *
+     * System.out.println("DISSIM: " + dissim); }
+     */
 
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
         // Time range (parameters - given)
-        return getDISSIM(r_clone, s_clone, getTimeIni(r_clone, s_clone), getTimeEnd(r_clone, s_clone));
+        return getDISSIM(rClone, sClone, getTimeIni(rClone, sClone), getTimeEnd(rClone, sClone));
     }
-
 
     /**
      * Dissimilarity distance between two moving objects.
@@ -79,9 +73,8 @@ public class DISSIMDistanceCalculator implements SequenceDistanceCalculator {
     }
 
     /**
-     * Euclidean distance between two points moving with linear
-     * functions of time between consecutive time-stamps. Using
-     * factors of the trinomials a, b and c
+     * Euclidean distance between two points moving with linear functions of time
+     * between consecutive time-stamps. Using factors of the trinomials a, b and c
      */
     private static double getDistance(Point r_p1, Point r_p2, Point s_p1, Point s_p2, long time) {
         // get the factors

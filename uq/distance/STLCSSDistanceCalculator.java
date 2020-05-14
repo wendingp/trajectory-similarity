@@ -27,15 +27,15 @@ public class STLCSSDistanceCalculator implements SequenceDistanceCalculator {
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
         // Time range (parameters - given)
-        Time = getTimeEnd(r_clone, s_clone);
-        startTime1 = r_clone.get(0).timeLong;
-        startTime2 = s_clone.get(0).timeLong;
+        Time = getTimeEnd(rClone, sClone);
+        startTime1 = rClone.get(0).timeLong;
+        startTime2 = sClone.get(0).timeLong;
 
-        return getSTLCSS(r_clone, s_clone);
+        return getSTLCSS(rClone, sClone);
     }
 
     private double getSTLCSS(ArrayList<Point> r, ArrayList<Point> s) {
@@ -48,7 +48,6 @@ public class STLCSSDistanceCalculator implements SequenceDistanceCalculator {
         for (int i = 0; i <= s.size(); i++) {
             LCSSMetric[0][i] = 0;
         }
-
 
         for (int i = 1; i <= r.size(); i++) {
             for (int j = 1; j <= s.size(); j++) {
@@ -92,7 +91,3 @@ public class STLCSSDistanceCalculator implements SequenceDistanceCalculator {
         return Math.min(s.get(s.size() - 1).timeLong, r.get(r.size() - 1).timeLong);
     }
 }
-
-
-
-

@@ -9,7 +9,7 @@ public class EuclideanDistanceCalculator implements PointDistanceCalculator {
         assert (x.dimension == y.dimension);
         double sum = 0;
         for (int i = 0; i < x.dimension; ++i) {
-			sum += Math.pow(x.coordinate[i] - y.coordinate[i], 2);
+            sum += Math.pow(x.coordinate[i] - y.coordinate[i], 2);
         }
         return Math.sqrt(sum);
     }

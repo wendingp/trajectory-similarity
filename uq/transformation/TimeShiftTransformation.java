@@ -5,7 +5,8 @@ import uq.entities.Point;
 import java.util.ArrayList;
 
 /**
- * Shifts the time period of a trajectory, make it starts from time t = startTime
+ * Shifts the time period of a trajectory, make it starts from time t =
+ * startTime
  *
  * @author uqdalves
  */
@@ -17,8 +18,8 @@ public class TimeShiftTransformation implements TransformationInterface {
     }
 
     /**
-     * Returns a copy of the trajectory with time period shifted to
-     * start at t = zero
+     * Returns a copy of the trajectory with time period shifted to start at t =
+     * zero
      */
     @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list) {

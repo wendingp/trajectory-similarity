@@ -15,15 +15,15 @@ import uq.services.DistanceService;
 public class TIDDistanceCalculator implements SequenceDistanceCalculator {
     ArrayList<Point> r = null;
     ArrayList<Point> s = null;
-    double[] angle = new double[]{0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340};
+    double[] angle = new double[] {0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340};
 
     @Override
     public double getDistance(ArrayList<Point> r, ArrayList<Point> s) {
         // make sure the original objects will not be changed
-        ArrayList<Point> r_clone = DistanceService.clonePointsList(r);
-        ArrayList<Point> s_clone = DistanceService.clonePointsList(s);
+        ArrayList<Point> rClone = DistanceService.clonePointsList(r);
+        ArrayList<Point> sClone = DistanceService.clonePointsList(s);
 
-        return getTID(r_clone, s_clone);
+        return getTID(rClone, sClone);
     }
 
     private double getTID(ArrayList<Point> rr, ArrayList<Point> ss) {

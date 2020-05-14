@@ -31,8 +31,8 @@ public class Line {
             isKZero = true;
             x = startPoint.coordinate[0];
         } else {
-
-            k = (endPoint.coordinate[1] - startPoint.coordinate[1]) / (endPoint.coordinate[0] - startPoint.coordinate[0]);
+            k = (endPoint.coordinate[1] - startPoint.coordinate[1])
+                    / (endPoint.coordinate[0] - startPoint.coordinate[0]);
             b = startPoint.coordinate[1] - k * startPoint.coordinate[0];
         }
     }
@@ -49,11 +49,12 @@ public class Line {
         long startTime = startPoint.timeLong;
         long endTime = endPoint.timeLong;
 
-        double X = (relativeTime) * (endPoint.coordinate[0] - startPoint.coordinate[0]) / (endTime - startTime) + startPoint.coordinate[0];
+        double X = (relativeTime) * (endPoint.coordinate[0] - startPoint.coordinate[0]) / (endTime - startTime)
+                + startPoint.coordinate[0];
 
         double Y = getYByX(X);
 
-        return new Point(new double[]{X, Y}, (long) (startTime + relativeTime));
+        return new Point(new double[] {X, Y}, (long) (startTime + relativeTime));
     }
 
     public double getPointLineDistance(Point p) {

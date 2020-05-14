@@ -4,9 +4,9 @@
  */
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1
@@ -14,14 +14,13 @@ import uq.entities.Point;
 public class WholeTrajectoryTranslationTransformation implements TransformationInterface {
     double reductionRatio = 0.5;
 
-    public WholeTrajectoryTranslationTransformation() {
-    }
+    public WholeTrajectoryTranslationTransformation() {}
 
     public WholeTrajectoryTranslationTransformation(double ReductionRatio) {
         reductionRatio = ReductionRatio;
     }
 
-    //è®©x,yå��æ ‡ç­‰æ¯�?ä¾‹ç¼©æ�?¾
+    //¨¨??x,y????????¡ë??????????????
     @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
         return null;
@@ -36,7 +35,7 @@ public class WholeTrajectoryTranslationTransformation implements TransformationI
         for (int i = 1; i < list.size(); i++) {
             double lengthX = (list.get(i).coordinate[0] - list.get(0).coordinate[0]) * reductionRatio;
             double lengthY = (list.get(i).coordinate[1] - list.get(0).coordinate[1]) * reductionRatio;
-            double[] cood = new double[]{list.get(0).coordinate[0] + lengthX, list.get(0).coordinate[1] + lengthY};
+            double[] cood = new double[] {list.get(0).coordinate[0] + lengthX, list.get(0).coordinate[1] + lengthY};
             result.add(new Point(cood, list.get(i).timeLong));
         }
         return result;

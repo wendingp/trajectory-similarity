@@ -4,9 +4,9 @@
  */
 package uq.transformation;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
+
+import java.util.ArrayList;
 
 /**
  * @author uqhsu1
@@ -127,7 +127,9 @@ public class AddNoiseTransformation implements TransformationInterface {
         }
         int[] allSizeList = sort(valueList);
 
-        if (N >= 0) System.arraycopy(allSizeList, 0, result, 0, N);
+        if (N >= 0) {
+            System.arraycopy(allSizeList, 0, result, 0, N);
+        }
 
         for (int i = 0; i < N; i++) {
             int min = result[i];

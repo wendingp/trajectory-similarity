@@ -14,7 +14,7 @@ public class Polygon {
     ArrayList<Point> polygon;
 
     public Polygon() {
-        polygon = new ArrayList<Point>();
+        polygon = new ArrayList<>();
     }
 
     public Polygon(ArrayList<Point> p) {

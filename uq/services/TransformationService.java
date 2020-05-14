@@ -1,17 +1,10 @@
 package uq.services;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 import uq.entities.Trajectory;
-import uq.transformation.AddNoiseTransformation;
-import uq.transformation.AddPointsTransformation;
-import uq.transformation.DeletePointTransformation;
-import uq.transformation.DifferentSampleRateTransformation;
-import uq.transformation.RamerDouglasPeuchkerAlgorithm;
-import uq.transformation.WholeTrajectoryRotationTransformation;
-import uq.transformation.WholeTrajectoryScaleTransformation;
-import uq.transformation.WholeTrajectoryTranslationTransformation;
+import uq.transformation.*;
+
+import java.util.ArrayList;
 
 /**
  * Service (proxy) to put together all transformation functions.
@@ -23,9 +16,8 @@ public class TransformationService {
     // Add points transformation
     public ArrayList<Trajectory> addPointsTransformation(ArrayList<Trajectory> list, double addRate) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
-        AddPointsTransformation addPtsTransf =
-                new AddPointsTransformation(addRate);
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
+        AddPointsTransformation addPtsTransf = new AddPointsTransformation(addRate);
 
         System.out.println("Add Points Transformation: " + (addRate * 100) + "pct");
 
@@ -42,9 +34,8 @@ public class TransformationService {
     // Delete points transformation
     public ArrayList<Trajectory> deletePointsTransformation(ArrayList<Trajectory> list, double deleteRate) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
-        DeletePointTransformation delPtsTransf =
-                new DeletePointTransformation(deleteRate);
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
+        DeletePointTransformation delPtsTransf = new DeletePointTransformation(deleteRate);
 
         System.out.println("Delete Points Transformation: " + (deleteRate * 100) + "pct");
         for (Trajectory traj : list) {
@@ -64,7 +55,7 @@ public class TransformationService {
     // Different sample rate transformation
     public ArrayList<Trajectory> diffSampleRateTransformation(ArrayList<Trajectory> list, int sampleRate) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
         DifferentSampleRateTransformation difSampRateTransf =
                 new DifferentSampleRateTransformation(sampleRate);
 
@@ -83,7 +74,7 @@ public class TransformationService {
     // Whole trajectory time scale transformation
     public ArrayList<Trajectory> timeScaleTransformation(ArrayList<Trajectory> list, double timeRatio) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
         WholeTrajectoryScaleTransformation timeScaleTransf =
                 new WholeTrajectoryScaleTransformation(timeRatio);
 
@@ -102,7 +93,7 @@ public class TransformationService {
     // Whole trajectory rotation transformation
     public ArrayList<Trajectory> rotationTransformation(ArrayList<Trajectory> list, double angle) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
         WholeTrajectoryRotationTransformation rotationTransf =
                 new WholeTrajectoryRotationTransformation(angle);
 
@@ -121,7 +112,7 @@ public class TransformationService {
     // Whole trajectory scale transformation
     public ArrayList<Trajectory> scaleTransformation(ArrayList<Trajectory> list, double scaleRatio) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
         WholeTrajectoryTranslationTransformation scaleTransf =
                 new WholeTrajectoryTranslationTransformation(scaleRatio);
 
@@ -140,7 +131,7 @@ public class TransformationService {
     // Add noise transformation
     public ArrayList<Trajectory> addNoiseTransformation(ArrayList<Trajectory> list, double addRate, double noiseDist) {
         //ArrayList<Trajectory> cloneList = cloneList(list);
-        ArrayList<Trajectory> newTrajectoryList = new ArrayList<Trajectory>();
+        ArrayList<Trajectory> newTrajectoryList = new ArrayList<>();
         AddNoiseTransformation noiseTransf =
                 new AddNoiseTransformation(addRate, noiseDist);
 

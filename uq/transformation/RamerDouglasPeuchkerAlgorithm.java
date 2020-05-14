@@ -12,7 +12,7 @@ import uq.entities.Point;
  * @author uqhsu1
  */
 public class RamerDouglasPeuchkerAlgorithm {
-    private ArrayList<Point> originalPoints;
+    private final ArrayList<Point> originalPoints = null;
     //
     //threshold should be decide carefully
     //
@@ -81,10 +81,7 @@ public class RamerDouglasPeuchkerAlgorithm {
     }
 
     private ArrayList<Point> mergeResult(ArrayList<Point> left, ArrayList<Point> right) {
-        ArrayList<Point> result = new ArrayList<>();
-        for (int i = 0; i < left.size(); i++) {
-            result.add(left.get(i));
-        }
+        ArrayList<Point> result = new ArrayList<>(left);
 
         for (int i = 1; i < right.size(); i++) { // TODO i = 1 bug?
             result.add(right.get(i));

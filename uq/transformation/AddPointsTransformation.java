@@ -12,10 +12,10 @@ import uq.entities.Point;
  * @author uqhsu1 wendingp
  */
 public class AddPointsTransformation implements TransformationInterface {
-    private final double DEFAULT_ADD_RATE = 0.25;
     public double addRate;
 
     public AddPointsTransformation() {
+        double DEFAULT_ADD_RATE = 0.25;
         addRate = DEFAULT_ADD_RATE;
     }
 
@@ -45,7 +45,7 @@ public class AddPointsTransformation implements TransformationInterface {
             result.add(list.get(i));
             for (int value : valueList) {
                 if (value == i) {
-                    Point temp = getMidPoint((Point) list.get(i), (Point) list.get(i + 1));
+                    Point temp = getMidPoint(list.get(i), list.get(i + 1));
                     result.add(temp);
                 }
             }
@@ -54,6 +54,7 @@ public class AddPointsTransformation implements TransformationInterface {
         return result;
     }
 
+    @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
         return null;
     }
@@ -92,9 +93,7 @@ public class AddPointsTransformation implements TransformationInterface {
         }
         int[] allSizeList = sort(valueList);
 
-        for (int i = 0; i < N; i++) {
-            result[i] = allSizeList[i];
-        }
+        if (N >= 0) System.arraycopy(allSizeList, 0, result, 0, N);
 
         for (int i = 0; i < N; i++) {
             int min = result[i];

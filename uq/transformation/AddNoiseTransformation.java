@@ -65,6 +65,7 @@ public class AddNoiseTransformation implements TransformationInterface {
         return result;
     }
 
+    @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
         return null;
     }
@@ -83,9 +84,8 @@ public class AddNoiseTransformation implements TransformationInterface {
         for (int i = 0; i < cood.length; i++) {
             cood[i] = pCood[i] + noise[i];
         }
-        Point result = new Point(cood, p.timeLong);
 
-        return result;
+        return new Point(cood, p.timeLong);
     }
 
     private Point getMidNoisePoint(Point p, Point q, double noiseD) {
@@ -127,9 +127,7 @@ public class AddNoiseTransformation implements TransformationInterface {
         }
         int[] allSizeList = sort(valueList);
 
-        for (int i = 0; i < N; i++) {
-            result[i] = allSizeList[i];
-        }
+        if (N >= 0) System.arraycopy(allSizeList, 0, result, 0, N);
 
         for (int i = 0; i < N; i++) {
             int min = result[i];

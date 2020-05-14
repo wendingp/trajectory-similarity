@@ -12,7 +12,7 @@ import uq.entities.Point;
  * @author uqhsu1
  */
 public class WholeTrajectoryScaleTransformation implements TransformationInterface {
-    double translation;
+    double translation = 0.0;
 
     public WholeTrajectoryScaleTransformation() {
     }
@@ -21,10 +21,12 @@ public class WholeTrajectoryScaleTransformation implements TransformationInterfa
         translation = timeRatio;
     }
 
+    @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
         return null;
     }
 
+    @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list) {
         ArrayList<Point> result = new ArrayList<>();
         long startTime = list.get(0).timeLong;

@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Point implements Cloneable {
 
-    public Date time;
-    public double[] coordinate;
-    public int dimension;
+    public Date time = null;
+    public double[] coordinate = null;
+    public int dimension = 0;
     public String timeString = "";
-    public long timeLong;
+    public long timeLong = 0L;
 
 
     public Point() {

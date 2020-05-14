@@ -17,7 +17,7 @@ public class ERPDistanceCalculator implements SequenceDistanceCalculator {
 	}
 
 	private ArrayList<Point> normalization(ArrayList<Point> t) {
-		ArrayList<Point> result = new ArrayList<Point>();
+		ArrayList<Point> result = new ArrayList<>();
 
 		if (t.size() == 0) {
 			return result;
@@ -25,20 +25,20 @@ public class ERPDistanceCalculator implements SequenceDistanceCalculator {
 		assert (t.get(0).dimension == 1);
 
 		double mean = 0;
-		for (int i = 0; i < t.size(); i++) {
-			mean += t.get(i).coordinate[0];
+		for (Point item : t) {
+			mean += item.coordinate[0];
 		}
 		mean /= t.size();
 
 		double standardDeviation = 0;
-		for (int i = 0; i < t.size(); i++) {
-			standardDeviation += Math.pow(t.get(i).coordinate[0] - mean, 2);
+		for (Point value : t) {
+			standardDeviation += Math.pow(value.coordinate[0] - mean, 2);
 		}
 		standardDeviation = Math.sqrt(standardDeviation);
 
-		for (int i = 0; i < t.size(); i++) {
+		for (Point point : t) {
 
-			double[] tempCoordinate = t.get(i).coordinate;
+			double[] tempCoordinate = point.coordinate;
 			tempCoordinate[0] = (tempCoordinate[0] - mean) / standardDeviation;
 			Point temp = new Point(tempCoordinate);
 			result.add(temp);
@@ -55,13 +55,13 @@ public class ERPDistanceCalculator implements SequenceDistanceCalculator {
 		double[][] erpMetric = new double[r.size() + 1][s.size() + 1];
 
 		double rAB = 0;
-		for (int i = 0; i < r.size(); i++) {
-			rAB += Math.abs(r.get(i).coordinate[0]);
+		for (Point value : r) {
+			rAB += Math.abs(value.coordinate[0]);
 		}
 
 		double sAB = 0;
-		for (int i = 0; i < s.size(); i++) {
-			sAB += Math.abs(s.get(i).coordinate[0]);
+		for (Point point : s) {
+			sAB += Math.abs(point.coordinate[0]);
 		}
 
 		for (int i = 0; i <= r.size(); i++) {
@@ -88,10 +88,7 @@ public class ERPDistanceCalculator implements SequenceDistanceCalculator {
 		if (a <= b && a <= c) {
 			return a;
 		}
-		if (b <= c) {
-			return b;
-		}
-		return c;
+		return Math.min(b, c);
 	}
 
 	private double subcost(Point p1, Point p2) {

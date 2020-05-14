@@ -26,9 +26,9 @@ import static uq.distance.LIPDistanceCalculator.getLines;
  */
 public class STLIPDistanceCalculator implements SequenceDistanceCalculator {
 
-    ArrayList<Polygon> polygon;
-    ArrayList<Double> weight;
-    ArrayList<Double> TLIP;
+    ArrayList<Polygon> polygon = null;
+    ArrayList<Double> weight = null;
+    ArrayList<Double> TLIP = null;
     double K = 0.5;
 
     @Override
@@ -67,10 +67,10 @@ public class STLIPDistanceCalculator implements SequenceDistanceCalculator {
 
     private ArrayList<Polygon> getPolygon(ArrayList<Point> r, ArrayList<Point> s) {
 
-        ArrayList<Polygon> result = new ArrayList<Polygon>();
+        ArrayList<Polygon> result = new ArrayList<>();
 
-        weight = new ArrayList<Double>();
-        TLIP = new ArrayList<Double>();
+        weight = new ArrayList<>();
+        TLIP = new ArrayList<>();
 
         double lengthR = getLength(r);
         double lengthS = getLength(s);
@@ -84,13 +84,10 @@ public class STLIPDistanceCalculator implements SequenceDistanceCalculator {
         ArrayList<Line> rl = getPolyline(r);
         ArrayList<Line> sl = getPolyline(s);
 
-        ArrayList<Point> intersections = new ArrayList<Point>();
-        ArrayList<twoInt> index = new ArrayList<twoInt>();
+        ArrayList<Point> intersections = new ArrayList<>();
+        ArrayList<twoInt> index = new ArrayList<>();
 
         boolean[] used = new boolean[sl.size()];
-        for (int i = 0; i < used.length; i++) {
-            used[i] = false;
-        }
 
         for (int i = 0; i < rl.size(); i++) {
             for (int j = 0; j < sl.size(); j++) {
@@ -155,7 +152,7 @@ public class STLIPDistanceCalculator implements SequenceDistanceCalculator {
                     }
 
                     if (intersections.size() == 1) {
-                        ArrayList<Point> tempPolyPoints = new ArrayList<Point>();
+                        ArrayList<Point> tempPolyPoints = new ArrayList<>();
 
                         for (int ii = 0; ii <= i; ii++) {
                             tempPolyPoints.add(r.get(ii));
@@ -206,12 +203,12 @@ public class STLIPDistanceCalculator implements SequenceDistanceCalculator {
                             tempPolyPoints.add(s.get(ii));
                         }
 
-                        ArrayList<Point> tempR = new ArrayList<Point>();
+                        ArrayList<Point> tempR = new ArrayList<>();
                         for (int ii = index.get(index.size() - 2).x + 1; ii <= i; ii++) {
                             tempR.add(r.get(ii));
                         }
 
-                        ArrayList<Point> tempS = new ArrayList<Point>();
+                        ArrayList<Point> tempS = new ArrayList<>();
                         for (int ii = index.get(index.size() - 2).y + 1; ii <= j; ii++) {
                             tempS.add(s.get(ii));
                         }

@@ -24,7 +24,7 @@ public class EDRDistanceCalculator implements SequenceDistanceCalculator {
 	}
 
 	private ArrayList<Point> normalization(List<Point> t) {
-		ArrayList<Point> result = new ArrayList<Point>();
+		ArrayList<Point> result = new ArrayList<>();
 
 		if (t.size() == 0) {
 			return result;
@@ -68,28 +68,25 @@ public class EDRDistanceCalculator implements SequenceDistanceCalculator {
 		// ArrayList<Point> r = normalization(rO); // TODO ?
 		// ArrayList<Point> s = normalization(sO);
 
-		ArrayList<Point> r = rO;
-		ArrayList<Point> s = sO;
+		double[][] edrMetric = new double[rO.size() + 1][sO.size() + 1];
 
-		double[][] edrMetric = new double[r.size() + 1][s.size() + 1];
-
-		for (int i = 0; i <= r.size(); i++) {
+		for (int i = 0; i <= rO.size(); i++) {
 			edrMetric[i][0] = i;
 		}
-		for (int i = 0; i <= s.size(); i++) {
+		for (int i = 0; i <= sO.size(); i++) {
 			edrMetric[0][i] = i;
 		}
 
 		edrMetric[0][0] = 0;
 
-		for (int i = 1; i <= r.size(); i++) {
-			for (int j = 1; j <= s.size(); j++) {
-				edrMetric[i][j] = min(edrMetric[i - 1][j - 1] + subcost(r.get(i - 1), s.get(j - 1)),
+		for (int i = 1; i <= rO.size(); i++) {
+			for (int j = 1; j <= sO.size(); j++) {
+				edrMetric[i][j] = min(edrMetric[i - 1][j - 1] + subcost(rO.get(i - 1), sO.get(j - 1)),
 						edrMetric[i][j - 1] + 1, edrMetric[i - 1][j] + 1);
 			}
 		}
 
-		return edrMetric[r.size()][s.size()];
+		return edrMetric[rO.size()][sO.size()];
 
 	}
 
@@ -123,11 +120,7 @@ public class EDRDistanceCalculator implements SequenceDistanceCalculator {
 	private double min(double a, double b, double c) {
 		if (a <= b && a <= c) {
 			return a;
-		} else if (b <= c) {
-			return b;
-		} else {
-			return c;
-		}
+		} else return Math.min(b, c);
 	}
 
 	public String toString() {

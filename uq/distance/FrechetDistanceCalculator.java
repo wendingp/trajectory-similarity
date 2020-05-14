@@ -77,7 +77,7 @@ public class FrechetDistanceCalculator implements SequenceDistanceCalculator {
     }
 
     private ArrayList<Line> getPolyline(ArrayList<Point> r) {
-        ArrayList<Line> result = new ArrayList<Line>();
+        ArrayList<Line> result = new ArrayList<>();
 
         if (r.size() < 2) {
             return result;
@@ -91,7 +91,7 @@ public class FrechetDistanceCalculator implements SequenceDistanceCalculator {
     }
 
     private ArrayList<ThreeDLine> getThreeDLine(ArrayList<Point> r) {
-        ArrayList<ThreeDLine> result = new ArrayList<ThreeDLine>();
+        ArrayList<ThreeDLine> result = new ArrayList<>();
 
         if (r.size() < 2) {
             return result;

@@ -22,8 +22,8 @@ public class PolygonNew {
     ArrayList<Point> lower;
 
     public PolygonNew() {
-        upper = new ArrayList<Point>();
-        lower = new ArrayList<Point>();
+        upper = new ArrayList<>();
+        lower = new ArrayList<>();
     }
 
     public PolygonNew(ArrayList<Point> ip, ArrayList<Point> low) {

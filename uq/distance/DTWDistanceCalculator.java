@@ -1,9 +1,9 @@
 package uq.distance;
 
-import java.util.ArrayList;
-
 import uq.entities.Point;
 import uq.services.DistanceService;
+
+import java.util.ArrayList;
 
 /**
  * Dynamic Time Warping distance measure.

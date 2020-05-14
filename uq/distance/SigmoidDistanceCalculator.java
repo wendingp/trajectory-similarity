@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import uq.entities.Point;
 
 public class SigmoidDistanceCalculator implements SequenceDistanceCalculator {
-    private double a;
-    private int k;
-    private int delta; // the temporal threshold
+    private final double a;
+    private final int k;
+    private final int delta; // the temporal threshold
 
     public SigmoidDistanceCalculator(double A, int K, int Delta) {
         a = A;

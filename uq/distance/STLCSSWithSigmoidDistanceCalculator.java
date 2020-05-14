@@ -15,8 +15,8 @@ import uq.services.DistanceService;
 public class STLCSSWithSigmoidDistanceCalculator implements SequenceDistanceCalculator {
     double Distance;
     double Time;
-    long startTime1;
-    long startTime2;
+    long startTime1 = 0L;
+    long startTime2 = 0L;
 
     public STLCSSWithSigmoidDistanceCalculator(double distanceThreshold, long timeIntervalThreshold) {
         Distance = distanceThreshold;

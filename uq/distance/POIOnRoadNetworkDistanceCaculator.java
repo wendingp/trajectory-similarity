@@ -1,6 +1,7 @@
 package uq.distance;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import uq.entities.Point;
 import uq.services.DistanceService;
@@ -53,9 +54,7 @@ public class POIOnRoadNetworkDistanceCaculator implements SequenceDistanceCalcul
     private int[] getSequence(ArrayList<Point> t) {
         //ArrayList<Integer> result=new ArrayList<Integer>();
         int[] result = new int[POISet.size()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = Integer.MAX_VALUE;
-        }
+        Arrays.fill(result, Integer.MAX_VALUE);
 
         for (int i = 0; i < t.size(); i++) {
             int index = getMatch(t.get(i));

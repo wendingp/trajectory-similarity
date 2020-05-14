@@ -26,6 +26,7 @@ public class DeletePointTransformation implements TransformationInterface {
         return null;
     }
 
+    @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
         ArrayList<Point> Result = new ArrayList<>();
 
@@ -72,9 +73,7 @@ public class DeletePointTransformation implements TransformationInterface {
 
         int[] allSizeList = sort(valueList);
 
-        for (int i = 0; i < N; i++) {
-            result[i] = allSizeList[i];
-        }
+        if (N >= 0) System.arraycopy(allSizeList, 0, result, 0, N);
 
         for (int i = 0; i < N; i++) {
             int min = result[i];

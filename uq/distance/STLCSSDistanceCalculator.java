@@ -16,8 +16,8 @@ public class STLCSSDistanceCalculator implements SequenceDistanceCalculator {
 
     double Distance;
     double Time;
-    long startTime1;
-    long startTime2;
+    long startTime1 = 0L;
+    long startTime2 = 0L;
 
     public STLCSSDistanceCalculator(double distanceThreshold, long timeIntervalThreshold) {
         Distance = distanceThreshold;
@@ -70,6 +70,7 @@ public class STLCSSDistanceCalculator implements SequenceDistanceCalculator {
         for (int i = 0; i < p1.dimension; i++) {
             if (Math.abs(p1.coordinate[i] - p2.coordinate[i]) > Distance) {
                 isSame = false;
+                break;
             }
         }
 

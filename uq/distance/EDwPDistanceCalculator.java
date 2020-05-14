@@ -188,9 +188,7 @@ public class EDwPDistanceCalculator implements SequenceDistanceCalculator {
         double x = e_p1.coordinate[0] + (dot_product * (e_p2.coordinate[0] - e_p1.coordinate[0])) / len_2;
         double y = e_p1.coordinate[1] + (dot_product * (e_p2.coordinate[1] - e_p1.coordinate[1])) / len_2;
 
-        Point p_proj = new Point(new double[]{x, y});
-
-        return p_proj;
+        return new Point(new double[]{x, y});
     }
 
     /**
@@ -198,8 +196,8 @@ public class EDwPDistanceCalculator implements SequenceDistanceCalculator {
      */
     private static double dotProduct(Point e_p1, Point e_p2, Point p) {
         // shift the points to the origin
-        double shift_e[] = new double[p.dimension];
-        double shift_p[] = new double[p.dimension];
+        double[] shift_e = new double[p.dimension];
+        double[] shift_p = new double[p.dimension];
         for (int i = 0; i < p.dimension; i++) {
             shift_e[i] = e_p2.coordinate[i] - e_p1.coordinate[i];
             shift_p[i] = p.coordinate[i] - e_p1.coordinate[i];

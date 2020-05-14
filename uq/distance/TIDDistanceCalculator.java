@@ -13,8 +13,8 @@ import uq.services.DistanceService;
  * @author uqhsu1
  */
 public class TIDDistanceCalculator implements SequenceDistanceCalculator {
-    ArrayList<Point> r;
-    ArrayList<Point> s;
+    ArrayList<Point> r = null;
+    ArrayList<Point> s = null;
     double[] angle = new double[]{0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340};
 
     @Override
@@ -46,7 +46,7 @@ public class TIDDistanceCalculator implements SequenceDistanceCalculator {
         double cos = Math.cos(rotationAngle);
         double sin = Math.sin(rotationAngle);
 
-        ArrayList<Point> ret = new ArrayList<Point>(r.size());
+        ArrayList<Point> ret = new ArrayList<>(r.size());
 
         for (int i = 0; i < r.size(); i++) {
             assert (r.get(i).dimension == 2);

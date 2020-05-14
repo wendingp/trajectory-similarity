@@ -53,9 +53,7 @@ public class Line {
 
         double Y = getYByX(X);
 
-        Point p = new Point(new double[]{X, Y}, (long) (startTime + relativeTime));
-
-        return p;
+        return new Point(new double[]{X, Y}, (long) (startTime + relativeTime));
     }
 
     public double getPointLineDistance(Point p) {
@@ -121,11 +119,7 @@ public class Line {
         double x = p.coordinate[0];
         double y = p.coordinate[1];
 
-        if (x >= sx && x < ex && y >= sy && y < ey) {
-            return true;
-        }
-
-        return false;
+        return x >= sx && x < ex && y >= sy && y < ey;
     }
 
     public boolean isInLineX(double xx) {
@@ -146,11 +140,7 @@ public class Line {
             sy = ey;
             ey = temp;
         }
-        if (xx >= sx && xx < ex) {
-            return true;
-        }
-
-        return false;
+        return xx >= sx && xx < ex;
     }
 
 }

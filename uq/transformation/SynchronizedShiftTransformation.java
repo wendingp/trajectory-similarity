@@ -34,7 +34,7 @@ public class SynchronizedShiftTransformation implements TransformationInterface 
 
     @Override
     public ArrayList<Point> getTransformation(ArrayList<Point> list, ArrayList<Point> escapeList) {
-        ArrayList<Point> result = new ArrayList<Point>();
+        ArrayList<Point> result = new ArrayList<>();
 
         int shiftCount = (int) (list.size() * shiftRate);
 
